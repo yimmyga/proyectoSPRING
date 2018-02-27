@@ -1,6 +1,8 @@
 package com.proyectoSPRING.proyectoSPRING.controlador1;
 
 
+import com.proyectoSPRING.proyectoSPRING.dao.IpersonaDao;
+import com.proyectoSPRING.proyectoSPRING.entidades.Persona;
 import com.proyectoSPRING.proyectoSPRING.servicio.IIndexServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("Index")
 
 public class IndexController {
-    
+      @Autowired
+     IpersonaDao PersonaDao;
   
     @Autowired
     public IIndexServicio iindeservicio;
@@ -37,6 +40,17 @@ public class IndexController {
     public String sipion (){
         return "hola";
     }
+    
+    
+    @GetMapping("obtenerpersona")
+    @Autowired
+    public  Persona getPersona(){
+          return PersonaDao.findOne(new Long(1));
+        
+    }
+  
+    
+    
    
     
     }
